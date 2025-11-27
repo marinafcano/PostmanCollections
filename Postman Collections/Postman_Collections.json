@@ -123,8 +123,8 @@
 									"});\r",
 									"pm.test(\"Response contains the stated title\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    var title = pm.environment.get(\"title\");\r",
-									"    pm.expect(jsonData[0].title).to.eql(\"title\");\r",
+									"    var title = pm.environment.get(\"TITLE\");\r",
+									"    pm.expect(jsonData[0].title).to.eql(title);\r",
 									"});\r",
 									""
 								],
@@ -160,6 +160,65 @@
 								{
 									"key": "title",
 									"value": "eq.{{TITLE}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS GET BY BOOK AUTHOR",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Response contains the stated author\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var author = pm.environment.get(\"AUTHOR\");\r",
+									"    pm.expect(jsonData[0].author).to.eql(author);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "71c84953-7eac-4d5f-9ade-13503df309f3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books?author=eq.{{AUTHOR}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "author",
+									"value": "eq.{{AUTHOR}}"
 								}
 							]
 						}
