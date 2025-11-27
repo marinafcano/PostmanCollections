@@ -121,10 +121,10 @@
 									"pm.test(\"Response time is less than 2000ms\", function () {\r",
 									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
 									"});\r",
-									"pm.test(\"Response contains the stated id\", function () {\r",
+									"pm.test(\"Response contains the stated title\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    var title = (pm.environment.get(\"title\"));\r",
-									"    pm.expect(jsonData[0].title).to.eql(title);\r",
+									"    var title = pm.environment.get(\"title\");\r",
+									"    pm.expect(jsonData[0].title).to.eql(\"title\");\r",
 									"});\r",
 									""
 								],
