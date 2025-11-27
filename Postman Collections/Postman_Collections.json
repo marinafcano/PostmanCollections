@@ -342,6 +342,65 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "BOOKS GET BY BOOK PUBLISHER",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Response contains the stated publisher\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var publisher = pm.environment.get(\"PUBLISHER\");\r",
+									"    pm.expect(jsonData[0].publisher).to.eql(publisher);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "6e9e8021-c680-4ff8-a0a9-7067b585dce3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books?publisher=eq.{{PUBLISHER}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "publisher",
+									"value": "eq.{{PUBLISHER}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "ab3c6a16-0070-4d25-a718-3e2c97b38dc7"
