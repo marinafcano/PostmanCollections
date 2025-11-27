@@ -298,10 +298,10 @@
 									"pm.test(\"Response time is less than 2000ms\", function () {\r",
 									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
 									"});\r",
-									"pm.test(\"Response contains the stated author\", function () {\r",
+									"pm.test(\"Response contains whether the book is a paperback\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    var author = pm.environment.get(\"AUTHOR\");\r",
-									"    pm.expect(jsonData[0].author).to.eql(author);\r",
+									"    var paperback = pm.environment.get(\"PAPERBACK\");\r",
+									"    pm.expect(jsonData[0].paperback).to.eql(paperback);\r",
 									"});\r",
 									""
 								],
@@ -326,7 +326,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/books?author=eq.{{AUTHOR}}",
+							"raw": "{{URL}}/books?paperback=eq.{{PAPERBACK}}",
 							"host": [
 								"{{URL}}"
 							],
@@ -335,8 +335,8 @@
 							],
 							"query": [
 								{
-									"key": "author",
-									"value": "eq.{{AUTHOR}}"
+									"key": "paperback",
+									"value": "eq.{{PAPERBACK}}"
 								}
 							]
 						}
