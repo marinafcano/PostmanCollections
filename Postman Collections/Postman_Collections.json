@@ -224,6 +224,124 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "BOOKS GET BY BOOK YEAR",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Response contains the stated year\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var year = parseInt (pm.environment.get(\"YEAR\"));\r",
+									"    pm.expect(jsonData[0].year).to.eql(year);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "6daa9404-59fa-4889-a891-abae2ade3663",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books?year=eq.{{YEAR}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "year",
+									"value": "eq.{{YEAR}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS GET PAPERBACK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Response contains the stated author\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var author = pm.environment.get(\"AUTHOR\");\r",
+									"    pm.expect(jsonData[0].author).to.eql(author);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "68ee178d-5088-448a-8646-9b87990d34c4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books?author=eq.{{AUTHOR}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "author",
+									"value": "eq.{{AUTHOR}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "ab3c6a16-0070-4d25-a718-3e2c97b38dc7"
