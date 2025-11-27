@@ -106,6 +106,65 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "BOOKS GET BY TITLE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "82b44d3c-2d1a-4a4e-b11d-92c1b9c441ad",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Response contains stated id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var id = parseInt (pm.environment.get(\"BOOKSID\"));\r",
+									"        pm.expect(jsonData[0].id).to.eql(id);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "c8d2aa2f-14d8-4940-bd23-d6305d5d0e0e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "apikey"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books?id=eq.{{BOOKSID}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "eq.{{BOOKSID}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "ab3c6a16-0070-4d25-a718-3e2c97b38dc7"
