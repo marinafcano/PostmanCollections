@@ -83,7 +83,21 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "{{URL}}/books"
+						"url": {
+							"raw": "{{URL}}/books?id=eq.{{id}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "eq.{{id}}"
+								}
+							]
+						}
 					},
 					"response": []
 				}
