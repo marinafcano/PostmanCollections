@@ -61,7 +61,13 @@
 									"});\r",
 									"pm.test(\"Response time is less than 2000ms\", function () {\r",
 									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-									"});"
+									"});\r",
+									"pm.test(\"Response contains the stated id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var id = parseInt (pm.environment.get(\"id\"));\r",
+									"    pm.expect(jsonData[0].id).to.eql(id);\r",
+									"});\r",
+									""
 								],
 								"type": "text/javascript",
 								"packages": {},
@@ -95,6 +101,65 @@
 								{
 									"key": "id",
 									"value": "eq.{{id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS GET BY BOOK TITLE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Response contains the stated id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var title = (pm.environment.get(\"title\"));\r",
+									"    pm.expect(jsonData[0].title).to.eql(title);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "f54ed365-e121-46e5-8522-54a914d3b726",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books?title=eq.{{TITLE}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "eq.{{TITLE}}"
 								}
 							]
 						}
