@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "0c0bc74b-0315-4e17-81de-d4f00138027a",
+		"name": "API BOOKS",
+		"description": "# **API BOOKS**\n\n## BOOKS DATA BASE AND API PROJECT\n\n## 1 - DATABASE\n\n**Supabase project (Requires access):** [https://supabase.com/dashboard/project/esiwzgzhieotyjqedsjr](https://supabase.com/dashboard/project/esiwzgzhieotyjqedsjr)\n\nA database has been created in order to save BOOK data using SQL on SUPABASE.\n\n**SQL Queries:**\n\n[https://www.db-fiddle.com/f/piYTTQuTG31usg7sPCAip4/1](https://www.db-fiddle.com/f/piYTTQuTG31usg7sPCAip4/1)\n\nTest data have been inserted, consulted, edited and deleted on the SQL queries database.\n\n## 2 - API TESTING\n\n**API URL (Requires access):**\n\n[https://esiwzgzhieotyjqedsjr.supabase.co](https://esiwzgzhieotyjqedsjr.supabase.co)\n\n**BOOK API DOCUMENTATION:** [https://files.catbox.moe/n1b2p3.pdf](https://files.catbox.moe/n1b2p3.pdf)  \nAn API allowing queries, to insert, edit or delete data on the database has been created via SUPABASE.\n\n**Colección POSTMAN de PRUEBAS API (Requiere API Key):**\n\n[https://marina-fcano-1205839.postman.co/workspace/API-BOOKS~e001ad48-8b94-48ef-85b5-c40f615a3bc3/collection/50379187-0c0bc74b-0315-4e17-81de-d4f00138027a](https://marina-fcano-1205839.postman.co/workspace/API-BOOKS~e001ad48-8b94-48ef-85b5-c40f615a3bc3/collection/50379187-0c0bc74b-0315-4e17-81de-d4f00138027a)\n\n- Se ha creado una colección en POSTMAN para probar la API.\n    \n- Se han probado las peticiones GET, POST, PATCH y DELETE.\n    \n- Se han probado casos positivos y negativos (sin autentificación, con datos inválidos o datos vacios).\n    \n- Se han agregado tests para verificar los códigos de respuesta, el tiempo de respuesta y las respuestas de las peticiones.\n    \n\nEndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "BOOKS GET",
+			"item": [
+				{
+					"name": "BOOKS GET",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "82b44d3c-2d1a-4a4e-b11d-92c1b9c441ad",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "6e5a7ba0-f457-4f07-bc6d-259f7aa7f6de",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "apikey"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/books"
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS GET BY ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "82b44d3c-2d1a-4a4e-b11d-92c1b9c441ad",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"pm.test(\"Response contains stated id\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    var id = parseInt (pm.environment.get(\"BOOKSID\"));\r",
+									"        pm.expect(jsonData[0].id).to.eql(id);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "d2894c37-25b4-4e0e-b5a5-057f4b944dfb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "apikey"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books?id=eq.{{BOOKSID}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "eq.{{BOOKSID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "ab3c6a16-0070-4d25-a718-3e2c97b38dc7"
+		}
+	]
+}
