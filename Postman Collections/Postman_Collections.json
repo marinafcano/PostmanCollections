@@ -1355,7 +1355,7 @@
 			"name": "BOOKS PATCH",
 			"item": [
 				{
-					"name": "BOOKS PATCH",
+					"name": "BOOKS PATCH EDIT ALL FIELDS",
 					"event": [
 						{
 							"listen": "test",
