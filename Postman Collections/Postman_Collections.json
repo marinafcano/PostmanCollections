@@ -1362,8 +1362,8 @@
 							"script": {
 								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
 									"});\r",
 									"pm.test(\"Response time is less than 2000ms\", function () {\r",
 									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
@@ -1387,9 +1387,94 @@
 								"key": "APIKEY"
 							}
 						},
-						"method": "GET",
+						"method": "PATCH",
 						"header": [],
-						"url": "{{URL}}/books"
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"title\": \"Deep End\",\r\n    \"author\": \"Ali Hazelwood\",\r\n    \"year\": 2025,\r\n    \"paperback\": true,\r\n    \"publisher\": \"Berkley\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/books?id=eq.{{BOOKIDEDIT}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "eq.{{BOOKIDEDIT}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS PATCH EDIT TITLE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "fbc7efa9-819a-4a07-b651-92f3c4875090",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"title\": \"Deep End\",\r\n    \"author\": \"Ali Hazelwood\",\r\n    \"year\": 2025,\r\n    \"paperback\": true,\r\n    \"publisher\": \"Berkley\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/books?id=eq.{{BOOKIDEDIT}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "eq.{{BOOKIDEDIT}}"
+								}
+							]
+						}
 					},
 					"response": []
 				}
