@@ -904,8 +904,17 @@
 								"key": "APIKEY"
 							}
 						},
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"title\": \"Albaoscura\",\r\n    \"author\": \"Jay Kristoff\",\r\n    \"year\": \"NULL\",\r\n    \"paperback\": \"NULL\",\r\n    \"publisher\": \"Nocturna\"\r\n}\r\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": "{{URL}}/books"
 					},
 					"response": []
