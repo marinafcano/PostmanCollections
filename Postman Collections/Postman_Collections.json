@@ -1355,7 +1355,7 @@
 			"name": "BOOKS PATCH",
 			"item": [
 				{
-					"name": "BOOKS GET Copy",
+					"name": "BOOKS PATCH",
 					"event": [
 						{
 							"listen": "test",
