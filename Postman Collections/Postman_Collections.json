@@ -867,6 +867,52 @@
 				}
 			],
 			"id": "ab3c6a16-0070-4d25-a718-3e2c97b38dc7"
+		},
+		{
+			"name": "BOOKS POST",
+			"item": [
+				{
+					"name": "BOOKS POST",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "09fe8061-3b4c-4e66-b8ee-1e05d4e60859",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/books"
+					},
+					"response": []
+				}
+			],
+			"id": "678d3212-83e2-4de5-8981-94eb22f88dcd",
+			"description": "# BOOKS POST\n\nAdd books"
 		}
 	]
 }
