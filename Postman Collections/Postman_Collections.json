@@ -688,7 +688,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/books?author=2",
+							"raw": "{{URL}}/books?paperback=false",
 							"host": [
 								"{{URL}}"
 							],
@@ -697,8 +697,8 @@
 							],
 							"query": [
 								{
-									"key": "author",
-									"value": "2"
+									"key": "paperback",
+									"value": "false"
 								}
 							]
 						}
