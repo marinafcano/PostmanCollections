@@ -879,8 +879,8 @@
 							"script": {
 								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
 									"});\r",
 									"pm.test(\"Response time is less than 2000ms\", function () {\r",
 									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
@@ -908,7 +908,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"title\": \"Albaoscura\",\r\n    \"author\": \"Jay Kristoff\",\r\n    \"year\": \"NULL\",\r\n    \"paperback\": \"NULL\",\r\n    \"publisher\": \"Nocturna\"\r\n}\r\n    ",
+							"raw": "{ \r\n    \"title\": \"Albaoscura\",\r\n    \"author\": \"Jay Kristoff\",\r\n    \"year\": 2019,\r\n    \"paperback\": false,\r\n    \"publisher\": \"Nocturna\"\r\n}\r\n    ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -998,6 +998,63 @@
 						},
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"title\": \"Albaoscura\",\r\n    \"author\": \"Jay Kristoff\",\r\n    \"year\": 2019,\r\n    \"paperback\": false,\r\n    \"publisher\": \"Nocturna\"\r\n}\r\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{URL}}/books"
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS POST INVALID TITLE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "1ee1bcdd-52f2-439f-b917-e610826626a2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"title\": \"Albaoscura\",\r\n    \"author\": \"Jay Kristoff\",\r\n    \"year\": 2019,\r\n    \"paperback\": false,\r\n    \"publisher\": \"Nocturna\"\r\n}\r\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": "{{URL}}/books"
 					},
 					"response": []
