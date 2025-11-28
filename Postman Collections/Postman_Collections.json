@@ -300,8 +300,7 @@
 									"});\r",
 									"pm.test(\"Response contains whether the book is a paperback\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    var paperback = pm.environment.get(\"PAPERBACK\");\r",
-									"    pm.expect(jsonData[0].paperback).to.eql(paperback);\r",
+									"    pm.expect(jsonData[0].paperback).to.eql(true);\r",
 									"});\r",
 									""
 								],
@@ -326,7 +325,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/books?paperback=eq.{{PAPERBACK}}",
+							"raw": "{{URL}}/books?paperback=eq.{{PAPERBACK}}&author=eq.{{AUTHOR}}",
 							"host": [
 								"{{URL}}"
 							],
@@ -337,6 +336,10 @@
 								{
 									"key": "paperback",
 									"value": "eq.{{PAPERBACK}}"
+								},
+								{
+									"key": "author",
+									"value": "eq.{{AUTHOR}}"
 								}
 							]
 						}
