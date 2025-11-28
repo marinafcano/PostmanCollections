@@ -872,7 +872,7 @@
 			"name": "BOOKS POST",
 			"item": [
 				{
-					"name": "BOOKS POST ALL FIELDS FULLFILED",
+					"name": "BOOKS POST ALL FIELDS",
 					"event": [
 						{
 							"listen": "test",
@@ -963,6 +963,41 @@
 								}
 							}
 						},
+						"url": "{{URL}}/books"
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS GET WITHOUT AUTHORIZATION",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 401, not authorized\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "49bb33d6-b39d-42a8-b9a3-fffd8d15f184",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
 						"url": "{{URL}}/books"
 					},
 					"response": []
