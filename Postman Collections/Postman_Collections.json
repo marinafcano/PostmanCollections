@@ -908,7 +908,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"title\": \"Albaoscura\",\r\n    \"author\": \"Jay Kristoff\",\r\n    \"year\": 2019,\r\n    \"paperback\": false,\r\n    \"publisher\": \"Nocturna\"\r\n}\r\n    ",
+							"raw": "{ \r\n    \"title\": \"Test\",\r\n    \"author\": \"Jay Kristoff\",\r\n    \"year\": 2019,\r\n    \"paperback\": false,\r\n    \"publisher\": \"Nocturna\"\r\n}\r\n    ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1350,6 +1350,52 @@
 			],
 			"id": "678d3212-83e2-4de5-8981-94eb22f88dcd",
 			"description": "# BOOKS POST\n\nAdd books"
+		},
+		{
+			"name": "BOOKS PATCH",
+			"item": [
+				{
+					"name": "BOOKS GET Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "f062810d-6c7d-4145-97b9-a40cc48314ec",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/books"
+					},
+					"response": []
+				}
+			],
+			"id": "6bc1f8a8-ac08-41f6-b00f-4cb0d448562f",
+			"description": "# BOOK PATCH"
 		}
 	]
 }
