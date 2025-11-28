@@ -547,7 +547,7 @@
 					"response": []
 				},
 				{
-					"name": "BOOKS GET Copy",
+					"name": "BOOKS GET INVALID AUTHOR",
 					"event": [
 						{
 							"listen": "test",
@@ -581,7 +581,21 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "{{URL}}/books"
+						"url": {
+							"raw": "{{URL}}/books?author=2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "author",
+									"value": "2"
+								}
+							]
+						}
 					},
 					"response": []
 				}
