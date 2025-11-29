@@ -1847,7 +1847,131 @@
 					"response": []
 				},
 				{
-					"name": "BOOKS PATCH EDIT INVALID NAME",
+					"name": "BOOKS PATCH EDIT INVALID TITLE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "98077d12-cd9d-4557-91b4-92588d86daa4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"title\": ****\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/books?id=eq.{{BOOKIDEDIT}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "eq.{{BOOKIDEDIT}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS PATCH EDIT INVALID AUTHOR",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "710cb66f-d327-45c6-af80-de54c37731aa",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"author\": INVALID\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/books?id=eq.{{BOOKIDEDIT}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "eq.{{BOOKIDEDIT}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS PATCH EDIT INVALID YEAR",
 					"event": [
 						{
 							"listen": "test",
@@ -1867,7 +1991,7 @@
 							}
 						}
 					],
-					"id": "98077d12-cd9d-4557-91b4-92588d86daa4",
+					"id": "c51841fa-b7c7-487f-b505-04e0ae0e019c",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
