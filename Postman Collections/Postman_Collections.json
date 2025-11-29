@@ -1978,6 +1978,68 @@
 							"script": {
 								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
 								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "c51841fa-b7c7-487f-b505-04e0ae0e019c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"year\": INVALID\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/books?id=eq.{{BOOKIDEDIT}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "eq.{{BOOKIDEDIT}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS PATCH EDIT EMPTY FIELDS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
 									"pm.test(\"Status code is 204\", function () {\r",
 									"    pm.response.to.have.status(204);\r",
 									"});\r",
@@ -1991,7 +2053,7 @@
 							}
 						}
 					],
-					"id": "c51841fa-b7c7-487f-b505-04e0ae0e019c",
+					"id": "cc27ab44-c303-4e66-9873-8f0a49169a02",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
