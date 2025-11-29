@@ -1665,7 +1665,7 @@
 					"response": []
 				},
 				{
-					"name": "BOOKS PATCH EDIT ALL FIELDS Copy",
+					"name": "BOOKS PATCH EDIT PUBLISHER",
 					"event": [
 						{
 							"listen": "test",
@@ -1686,6 +1686,68 @@
 						}
 					],
 					"id": "54e8a157-d724-48ae-b742-7da70a39f73c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"publisher\": \"TEST\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/books?id=eq.{{BOOKIDEDIT}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "eq.{{BOOKIDEDIT}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS PATCH EDIT ALL FIELDS Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "db2a8b00-e14c-4b1b-81ce-95b11b28ecbe",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
