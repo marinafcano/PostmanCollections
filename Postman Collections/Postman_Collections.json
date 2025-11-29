@@ -1847,15 +1847,15 @@
 					"response": []
 				},
 				{
-					"name": "BOOKS PATCH EDIT ID DOES NOT EXIST",
+					"name": "BOOKS PATCH EDIT INVALID NAME",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
 								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
 									"});\r",
 									"pm.test(\"Response time is less than 2000ms\", function () {\r",
 									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
@@ -1867,7 +1867,7 @@
 							}
 						}
 					],
-					"id": "455994b5-3c3c-4208-95c1-205201ca5c2e",
+					"id": "98077d12-cd9d-4557-91b4-92588d86daa4",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1891,7 +1891,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/books?id=eq.0",
+							"raw": "{{URL}}/books?id=eq.{{BOOKIDEDIT}}",
 							"host": [
 								"{{URL}}"
 							],
@@ -1901,7 +1901,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "eq.0"
+									"value": "eq.{{BOOKIDEDIT}}"
 								}
 							]
 						}
