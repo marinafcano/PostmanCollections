@@ -2033,15 +2033,15 @@
 					"response": []
 				},
 				{
-					"name": "BOOKS PATCH EDIT EMPTY FIELDS",
+					"name": "BOOKS PATCH EDIT NON-EXISTENT FIELD",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
 								"exec": [
-									"pm.test(\"Status code is 204\", function () {\r",
-									"    pm.response.to.have.status(204);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"pm.test(\"Response time is less than 2000ms\", function () {\r",
 									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
@@ -2069,7 +2069,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"title\": \"Deep End\",\r\n    \"author\": \"Ali Hazelwood\",\r\n    \"year\": 2025,\r\n    \"paperback\": true,\r\n    \"publisher\": \"Berkley\"\r\n}",
+							"raw": "{ \r\n    \"article\": \"test\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
