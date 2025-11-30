@@ -2279,59 +2279,6 @@
 					"response": []
 				},
 				{
-					"name": "BOOKS DELETE TEST Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
-								"exec": [
-									"pm.test(\"Status code is 204\", function () {\r",
-									"    pm.response.to.have.status(204);\r",
-									"});\r",
-									"pm.test(\"Response time is less than 2000ms\", function () {\r",
-									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"id": "b092f868-77fb-4e26-baf8-fef32abec86d",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "apikey",
-							"apikey": {
-								"value": "{{APIKEY}}",
-								"key": "APIKEY"
-							}
-						},
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/books?title=eq.Test",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"books"
-							],
-							"query": [
-								{
-									"key": "title",
-									"value": "eq.Test"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "BOOKS DELETE COMPULSORY FIELD AUTHOR",
 					"event": [
 						{
@@ -2378,6 +2325,161 @@
 								{
 									"key": "author",
 									"value": "eq.obligatorio"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS DELETE WITHOUT AUTHORIZATION",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "b092f868-77fb-4e26-baf8-fef32abec86d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books?title=eq.Test",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "eq.Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS DELETE INVALID FIELD",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "19fa40de-d3cc-4032-a286-d142bc74f2fe",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books?article=eq.Test",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "article",
+									"value": "eq.Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS DELETE TEST Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "c2f4ba69-f15b-472e-a474-55c91ecf4d7a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books?title=eq.Test",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "eq.Test"
 								}
 							]
 						}
