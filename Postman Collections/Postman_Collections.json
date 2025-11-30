@@ -2226,15 +2226,15 @@
 			"name": "BOOKS DELETE",
 			"item": [
 				{
-					"name": "BOOKS DELETE",
+					"name": "BOOKS DELETE TEST",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
 									"});\r",
 									"pm.test(\"Response time is less than 2000ms\", function () {\r",
 									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
@@ -2258,9 +2258,76 @@
 								"key": "APIKEY"
 							}
 						},
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
-						"url": "{{URL}}/books"
+						"url": {
+							"raw": "{{URL}}/books?title=eq.Test",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "eq.Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS DELETE TEST Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "6f8caa9a-ee91-4156-a017-535d68b2ecc8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books?title=eq.Test",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "eq.Test"
+								}
+							]
+						}
 					},
 					"response": []
 				}
