@@ -2279,7 +2279,7 @@
 					"response": []
 				},
 				{
-					"name": "BOOKS DELETE COMPULSORY FIELD AUTHOR",
+					"name": "BOOKS DELETE COMPULSORY AUTHOR FIELD",
 					"event": [
 						{
 							"listen": "test",
@@ -2487,15 +2487,15 @@
 					"response": []
 				},
 				{
-					"name": "BOOKS DELETE INVALID FIELD PAPERBACK",
+					"name": "BOOKS DELETE INVALID PAPERBACK FIELD",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
 								"exec": [
-									"pm.test(\"Status code is 204\", function () {\r",
-									"    pm.response.to.have.status(204);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"pm.test(\"Response time is less than 2000ms\", function () {\r",
 									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
@@ -2522,7 +2522,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/books?title=eq.Test",
+							"raw": "{{URL}}/books?paperback=eq.Test",
 							"host": [
 								"{{URL}}"
 							],
@@ -2531,8 +2531,61 @@
 							],
 							"query": [
 								{
-									"key": "title",
+									"key": "paperback",
 									"value": "eq.Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS DELETE EMPTY YEAR",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "956d490d-aad2-4e22-bf61-27c8a9c94bf0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books?year=",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "year",
+									"value": ""
 								}
 							]
 						}
