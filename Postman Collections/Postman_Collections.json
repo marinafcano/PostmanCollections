@@ -2299,7 +2299,7 @@
 							}
 						}
 					],
-					"id": "6f8caa9a-ee91-4156-a017-535d68b2ecc8",
+					"id": "b092f868-77fb-4e26-baf8-fef32abec86d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2325,6 +2325,59 @@
 								{
 									"key": "title",
 									"value": "eq.Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOKS DELETE COMPULSORY FIELD AUTHOR",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "6f8caa9a-ee91-4156-a017-535d68b2ecc8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/books?author=eq.obligatorio",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "author",
+									"value": "eq.obligatorio"
 								}
 							]
 						}
