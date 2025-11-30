@@ -2221,6 +2221,51 @@
 			],
 			"id": "6bc1f8a8-ac08-41f6-b00f-4cb0d448562f",
 			"description": "# BOOK PATCH"
+		},
+		{
+			"name": "BOOKS DELETE",
+			"item": [
+				{
+					"name": "BOOKS DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "282f3b43-bcc7-45c4-b28b-d9093e232a2b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "57b9057a-11ae-481e-8373-c59f706f4df9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{APIKEY}}",
+								"key": "APIKEY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/books"
+					},
+					"response": []
+				}
+			],
+			"id": "2b27b718-b30a-4291-8f82-adf7f690fb6f"
 		}
 	]
 }
